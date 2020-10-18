@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*
+    Appling display flex to the body
+    and margin auto to the memory-game
+    will center it
+*/
+
+body {
+    height: 100vh;
+    display: flex;
+    background-color: #85DBEB ;
+}
+
+.memory-game {
+    width: 1200px;
+    height: 675px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.memory-card {
+    width: calc(25% - 30px);
+    height: calc(53.333% - 30px);
+    position: relative;
+    margin: 15px;    /* The margin functions will make the cards flow outside of the card grid. The can be fixed with the css calc function */
+}
+
+.front-face,
+.back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;     /* absoulte positioning allows the two card faces to be ontop of each other */
+    border-radius: 5px;
+    border: 2px solid #4a4a4a;
+    /* For the transition below to work, we need a starting place */
+    transform: scale(1);
+}
+
+.memory-card:active {
+    transform: scale(97);
+    transition: transform .1s;
+}
