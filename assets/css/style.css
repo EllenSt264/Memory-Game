@@ -22,6 +22,8 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
+    /* Make it 3D */
+    perspective: 1000px;
 }
 
 .memory-card {
@@ -29,6 +31,9 @@ body {
     height: calc(53.333% - 30px);
     position: relative;
     margin: 15px;    /* The margin functions will make the cards flow outside of the card grid. The can be fixed with the css calc function */
+    /* 3D effect */
+    transform-style: preserve-3d;
+    transition: transform .5s;      /* to see the 3D effect in action */
 }
 
 .front-face,
@@ -40,9 +45,18 @@ body {
     border: 2px solid #4a4a4a;
     /* For the transition below to work, we need a starting place */
     transform: scale(1);
+    backface-visibility: hidden;
 }
 
-.memory-card:active {
+.front-face {
+    transform: rotateY(180deg);
+}
+
+/* .memory-card:active {
     transform: scale(97);
     transition: transform .1s;
+} */
+
+.memory-card.flip {
+    transform: rotateY(180deg);
 }
