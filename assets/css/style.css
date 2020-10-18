@@ -16,6 +16,16 @@ body {
     background-color: #85DBEB ;
 }
 
+button {
+    display: block;
+    height: 50px;
+    width: 150px;
+    border-radius: 25px;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .memory-game {
     width: 1200px;
     height: 675px;

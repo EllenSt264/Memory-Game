@@ -2,6 +2,19 @@ document.addEventListener("DOMContentLoaded", function() {
     // First we need to store all of the memory cards
     const cards = $(".memory-card");
 
+    // Shuffle
+    // Taken from: "https://stackoverflow.com/questions/53686841/html-shuffle-div-images-javascript"
+
+    var a = $(".memory-game > div").remove().toArray();
+    for (var i = a.length - 1; i >= 1; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var bi = a[i];
+        var bj = a[j];
+        a[i] = bj;
+        a[j] = bi;
+    }
+    $(".memory-game").append(a);
+
     // flipCard function
 
     var hasFlippedCard = false;
@@ -60,5 +73,5 @@ document.addEventListener("DOMContentLoaded", function() {
         [hasFlippedCard, lockBoard] = [false, false];
         [firstCard, secondCard] = [null, null];
     }
-});
-
+    
+})
