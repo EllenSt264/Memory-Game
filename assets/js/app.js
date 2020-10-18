@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
     
     $(cards).click(function() {
         if (lockBoard) return;
+        if (this === firstCard) return;
+
         $(this).addClass("flip");
 
         if (!hasFlippedCard) {      // if a card has not been flipped/clicked
@@ -37,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function disableCards() {
         $(firstCard).off("click");
         $(secondCard).off("click");
+
+        resetBoard();
     };
 
     function unflipCards() {
@@ -46,8 +50,15 @@ document.addEventListener("DOMContentLoaded", function() {
             $(firstCard).removeClass("flip");
             $(secondCard).removeClass("flip");
 
-            lockBoard = false;
+            resetBoard();
         }, 1000);
     };
+    
+    // In order for the condtion to work after each round,
+    // we have to set the first and second card to null
+    function resetBoard() {
+        [hasFlippedCard, lockBoard] = [false, false];
+        [firstCard, secondCard] = [null, null];
+    }
 });
 
