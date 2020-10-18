@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const cards = $(".memory-card");
 
     // flipCard function
-    
+
     var hasFlippedCard = false;
+    var lockBoard = false;
     var firstCard, secondCard;
     
     $(cards).click(function() {
+        if (lockBoard) return;
         $(this).addClass("flip");
 
         if (!hasFlippedCard) {      // if a card has not been flipped/clicked
@@ -38,9 +40,13 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     function unflipCards() {
+        lockBoard = true;
+
         setTimeout(function(){
             $(firstCard).removeClass("flip");
             $(secondCard).removeClass("flip");
+
+            lockBoard = false;
         }, 1000);
     };
 });
